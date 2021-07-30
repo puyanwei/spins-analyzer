@@ -1,4 +1,4 @@
-import React, { useState, useCallback, useMemo } from "react";
+import React, { FC, useState, useCallback, useMemo } from "react";
 import { useDropzone } from "react-dropzone";
 import {
   baseStyle,
@@ -8,20 +8,21 @@ import {
 } from "./dropzoneStyles";
 import { spinFileFormatter } from "../Utilities/spinFileFormatter";
 
-const Dropzone = (props) => {
+const Dropzone: FC = (): JSX.Element => {
   const [errorMsg, setErrorMsg] = useState("");
 
-  const rejectedFileTypeErrorMessage = `File type invalid. Please submit a .txt file and try again`;
-  const rejectedTextFileErrorMessage = `Pokerstars hand history file not recognised. Please try again`;
-  const successMessage = `Successfully uploaded`;
+  const rejectedFileTypeErrorMessage: string = `File type invalid. Please submit a .txt file and try again`;
+  const rejectedTextFileErrorMessage: string = `Pokerstars hand history file not recognised. Please try again`;
+  const successMessage: string = `Successfully uploaded`;
 
   const onDrop = useCallback(
-    (acceptedFiles, rejectedFiles) => {
-      acceptedFiles.forEach((file) => {
-        const fileReader = new FileReader();
+    (acceptedFiles: any[], rejectedFiles: any): void => {
+      acceptedFiles.forEach((file: any): void => {
+        const fileReader: FileReader = new FileReader();
         fileReader.readAsText(file);
-        fileReader.onload = (e) => {
-          if (e.target.result.includes(`PokerStars Tournament #`)) {
+        fileReader.onload = (e: ProgressEvent<FileReader> | null): void => {
+          if (!e?.target?.result) return;
+          if ((e.target.result as string).includes(`PokerStars Tournament #`)) {
             fetch("http://localhost:5000/data", {
               method: "post",
               headers: {

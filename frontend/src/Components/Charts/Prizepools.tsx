@@ -1,8 +1,15 @@
-import React from "react";
 import { Pie } from "react-chartjs-2";
 import { ChartStyle } from "../../shared/chartStyle";
 
-const PieChart = ({ data }) => {
+interface PrizepoolProps {
+  data: {
+    first: string;
+    second: string;
+    third: string;
+  };
+}
+
+const PieChart = ({ data }: PrizepoolProps): JSX.Element => {
   const chartsData = {
     labels: Object.keys(data),
     datasets: [
@@ -32,7 +39,7 @@ const PieChart = ({ data }) => {
 
   return (
     <ChartStyle>
-      <Pie data={chartsData} />
+      <Pie type="pie" data={chartsData} />
     </ChartStyle>
   );
 };

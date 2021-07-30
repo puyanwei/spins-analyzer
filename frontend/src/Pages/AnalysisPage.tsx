@@ -1,11 +1,11 @@
-import { useEffect, useState } from "react";
+import { FC, useEffect, useState } from "react";
 import { countHashKeys } from "../Utilities/common";
 
 import Prizepools from "../Components/Charts/Prizepools";
 import OpponentCountries from "../Components/Charts/OpponentCountries";
 import FinishPositions from "../Components/Charts/FinishPositions";
 
-const AnalysisPage = () => {
+const AnalysisPage: FC = (): JSX.Element => {
   const [handHistoryData, setHandHistoryData] = useState([]);
 
   useEffect(() => {

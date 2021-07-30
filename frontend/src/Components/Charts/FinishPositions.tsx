@@ -1,7 +1,15 @@
 import { Bar } from "react-chartjs-2";
 import { ChartStyle } from "../../shared/chartStyle";
 
-const FinishPositions = ({ data }) => {
+interface FinishPositionProps {
+  data: {
+    first: string;
+    second: string;
+    third: string;
+  };
+}
+
+const FinishPositions = ({ data }: FinishPositionProps): JSX.Element => {
   const chartsData = {
     labels: Object.keys(data),
     datasets: [
@@ -42,7 +50,7 @@ const FinishPositions = ({ data }) => {
   };
   return (
     <ChartStyle width={50}>
-      <Bar data={chartsData} options={options} />
+      <Bar type="bar" data={chartsData} options={options} />
     </ChartStyle>
   );
 };

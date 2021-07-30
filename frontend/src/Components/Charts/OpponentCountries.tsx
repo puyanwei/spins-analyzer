@@ -1,7 +1,10 @@
 import styled from "styled-components";
 import { Bar } from "react-chartjs-2";
+interface OpponentCountriesProps {
+  data: { [country: string]: number };
+}
 
-const OpponentCountries = ({ data }) => {
+const OpponentCountries = ({ data }: OpponentCountriesProps): JSX.Element => {
   const chartsData = {
     labels: Object.keys(data),
     datasets: [
@@ -9,7 +12,6 @@ const OpponentCountries = ({ data }) => {
         axis: "y",
         barPercentage: 1,
         barThickness: 6,
-        label: "Finish positions",
         data: Object.values(data),
         backgroundColor: [
           "rgba(255, 99, 132, 0.2)",
@@ -53,7 +55,7 @@ const OpponentCountries = ({ data }) => {
 
   return (
     <OpponentCountriesChartStyle>
-      <Bar data={chartsData} options={options} />
+      <Bar type="bar" data={chartsData} options={options} />
     </OpponentCountriesChartStyle>
   );
 };
