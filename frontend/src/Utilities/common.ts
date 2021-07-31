@@ -1,10 +1,12 @@
 const getPercentage = (numerator: number, total: number): string =>
   ((numerator / total) * 100).toFixed(2);
 
-const countHashKeys = (data: any, keyToCount: string): object => {
-  //sort out data
-  const hash: object = {};
-  data.forEach((obj: any) => {
+const countHashKeys = (
+  data: Array<{ [key: string]: string }>,
+  keyToCount: string
+): {} => {
+  const hash = {} as { [key: string]: number };
+  data.forEach((obj) => {
     const key = obj[keyToCount];
     hash[key] = hash[key] ? hash[key] + 1 : 1;
   });

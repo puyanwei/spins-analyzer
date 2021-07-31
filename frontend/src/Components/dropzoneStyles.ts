@@ -1,6 +1,6 @@
- const baseStyle = {
+const baseStyle = {
   display: "flex",
-  flexDirection: "column",
+  flexDirection: "column" as "column", //https://github.com/cssinjs/jss/issues/1344#issue-615428512
   alignItems: "center",
   padding: "20px",
   marginTop: "100px",
@@ -13,16 +13,16 @@
   transition: "border .3s ease-in-out",
 };
 
- const activeStyle = {
+const activeStyle = {
   borderColor: "#2196f3",
 };
 
- const acceptStyle = {
+const acceptStyle = {
   borderColor: "#00e676",
 };
 
- const rejectStyle = {
+const rejectStyle = {
   borderColor: "#ff1744",
 };
 
-export {baseStyle, acceptStyle, rejectStyle, activeStyle}
+export { baseStyle, acceptStyle, rejectStyle, activeStyle };

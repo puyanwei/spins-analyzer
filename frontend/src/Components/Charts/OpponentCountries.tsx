@@ -1,7 +1,10 @@
 import styled from "styled-components";
 import { Bar } from "react-chartjs-2";
 interface OpponentCountriesProps {
-  data: { [country: string]: number };
+  data: OpponentCountryData;
+}
+interface OpponentCountryData {
+  [country: string]: number;
 }
 
 const OpponentCountries = ({ data }: OpponentCountriesProps): JSX.Element => {

@@ -63,6 +63,7 @@ const Dropzone: FC = (): JSX.Element => {
     [isDragActive, isDragReject, isDragAccept]
   );
 
+  // {/*// @ts-ignore */}
   return (
     <>
       <div {...getRootProps({ style })}>
