@@ -1,15 +1,13 @@
+import { ReactElement } from "react";
 import { Pie } from "react-chartjs-2";
+import { PrizePoolsProps } from "../../Pages/AnalysisPage";
 import { ChartStyle } from "../../shared/chartStyle";
 
-interface PrizepoolProps {
-  data: {
-    first: string;
-    second: string;
-    third: string;
-  };
+export interface PrizePoolsPropsData {
+  data: PrizePoolsProps;
 }
 
-const PieChart = ({ data }: PrizepoolProps): JSX.Element => {
+const Prizepools = ({ data }: PrizePoolsPropsData): ReactElement => {
   const chartsData = {
     labels: Object.keys(data),
     datasets: [
@@ -44,4 +42,4 @@ const PieChart = ({ data }: PrizepoolProps): JSX.Element => {
   );
 };
 
-export default PieChart;
+export default Prizepools;

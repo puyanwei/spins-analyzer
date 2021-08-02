@@ -1,19 +1,26 @@
-import { FC, useEffect, useState } from "react";
-import { countHashKeys } from "../Utilities/common";
+import { ReactElement, useEffect, useState } from "react";
+import { countHashKeysPrizePools } from "../Utilities/common";
 import Prizepools from "../Components/Charts/Prizepools";
 import OpponentCountries from "../Components/Charts/OpponentCountries";
 import FinishPositions from "../Components/Charts/FinishPositions";
+export interface PrizePoolsProps {
+  "$10.00"?: number;
+  "$15.00"?: number;
+  "$25.00"?: number;
+}
 
-const AnalysisPage: FC = (): JSX.Element => {
-  const [prizePools, setPrizepools] = useState({});
-  const [finishPositions, setFinishPositions] = useState({});
+const AnalysisPage = (): ReactElement => {
+  const [prizePools, setPrizepools] = useState<PrizePoolsProps>();
+  const [finishPositions, setFinishPositions] = useState<{
+    [key: string]: number;
+  }>({});
   const [opponentCountries, setOpponentCountries] = useState({});
 
   useEffect(() => {
     fetch("http://localhost:5000/data")
       .then((response) => response.json())
       .then((data) => {
-        setPrizepools(countHashKeys(data, "prizePool"));
+        setPrizepools(countHashKeysPrizePools(data, "prizePool"));
         setFinishPositions(countHashKeys(data, "result"));
         setOpponentCountries({
           ...countHashKeys(data, "firstCountry"),
@@ -27,7 +34,7 @@ const AnalysisPage: FC = (): JSX.Element => {
   return (
     <div>
       <h1>Analysis Page</h1>
-      <Prizepools data={prizePools} />
+      {prizePools ? <Prizepools data={prizePools} /> : <></>}
       <FinishPositions data={finishPositions} />
       <OpponentCountries data={opponentCountries} />
     </div>

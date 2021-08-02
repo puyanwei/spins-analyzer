@@ -1,15 +1,15 @@
 import { Bar } from "react-chartjs-2";
 import { ChartStyle } from "../../shared/chartStyle";
-
-interface FinishPositionProps {
-  data: {
-    first: string;
-    second: string;
-    third: string;
-  };
+export interface FinishPositionProps {
+  data: { [key: string]: number };
+}
+export interface Data {
+  first: string;
+  second: string;
+  third: string;
 }
 
-const FinishPositions = ({ data }: FinishPositionProps): JSX.Element => {
+const FinishPositions = ({ data }: FinishPositionProps) => {
   const chartsData = {
     labels: Object.keys(data),
     datasets: [

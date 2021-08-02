@@ -7,7 +7,7 @@ interface OpponentCountryData {
   [country: string]: number;
 }
 
-const OpponentCountries = ({ data }: OpponentCountriesProps): JSX.Element => {
+const OpponentCountries = ({ data }: OpponentCountriesProps) => {
   const chartsData = {
     labels: Object.keys(data),
     datasets: [

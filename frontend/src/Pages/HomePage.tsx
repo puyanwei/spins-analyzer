@@ -1,8 +1,8 @@
-import { FC } from "react";
+import { ReactElement } from "react";
 import { useHistory } from "react-router-dom";
 import Dropzone from "../Components/Dropzone";
 
-const HomePage: FC = (): JSX.Element => {
+const HomePage = (): ReactElement => {
   const history = useHistory();
   return (
     <div>

@@ -1,6 +1,6 @@
 import { getElementWordBasedOnIndex } from "./common";
 
-export const spinFileFormatter = (text) => {
+export const spinFileFormatter = (text: string) => {
   const textArray = text.replace(/(\r\n|\n|\r)/gm, "").split(" ");
   const textInBrackets = text
     .match(/\(([^()]*)\)/g)

@@ -8,7 +8,7 @@ import {
 } from "./dropzoneStyles";
 import { spinFileFormatter } from "../Utilities/spinFileFormatter";
 
-const Dropzone: FC = (): JSX.Element => {
+const Dropzone: FC = () => {
   const [errorMsg, setErrorMsg] = useState("");
 
   const rejectedFileTypeErrorMessage: string = `File type invalid. Please submit a .txt file and try again`;
